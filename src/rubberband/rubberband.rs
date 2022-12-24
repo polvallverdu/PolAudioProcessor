@@ -74,8 +74,8 @@ impl RubberBand {
                 out[j * (self.channels as usize) + i] = output[i][j];
             }
         }
-
-        return limiter::limit(out);
+        limiter::limit(&mut out);
+        return out;
     }
 
     pub fn stop(&self) {
