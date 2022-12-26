@@ -66,6 +66,16 @@ impl RubberBand {
         return output;
     }
 
+    pub fn normalize_input(&self, input: Vec<f32>, samples: usize) -> Vec<Vec<f32>> {
+        let mut out = vec![vec![0.0; samples]; self.channels as usize];
+
+        for i in 0..input.len() {
+            out[i % (self.channels as usize)][i / (self.channels as usize)] = input[i];
+        }
+
+        return out;
+    }
+
     pub fn normalize_output(&self, output: &Vec<Vec<f32>>) -> Vec<f32> {
         let mut out = vec![0.0; output[0].len() * (self.channels as usize)];
 
