@@ -1,6 +1,6 @@
 use super::bindings::*;
 use std::{thread, time};
-use crate::limiter::simple_limiter as limiter;
+use crate::tools::Limiter;
 
 fn convert_to_vec_const(vec: &Vec<Vec<f32>>) -> Vec<*const f32> {
     let mut vec_const: Vec<*const f32> = Vec::with_capacity(vec.len());
@@ -84,7 +84,7 @@ impl RubberBand {
                 out[j * (self.channels as usize) + i] = output[i][j];
             }
         }
-        limiter::limit(&mut out);
+        Limiter::limit(&mut out);
         return out;
     }
 
