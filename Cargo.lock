@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "audio-processor"
+name = "audioprocessor"
 version = "0.1.0"
 dependencies = [
  "freeverb",
